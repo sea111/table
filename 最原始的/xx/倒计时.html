@@ -1,0 +1,83 @@
+1<!DOCTYPE html> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>获取验证码倒计时</title>
+	</head>
+	<style type="text/css">
+		a{text-decoration: none;color:#fff;}
+		.box{width:330px;height:200px;}
+		.btn{display: inline-block;width:120px;height:22px;text-align:center;line-height: 22px; }
+		.btn-on{background-color: #91C2EC;}
+		.btn-off{background-color: #B5B7BA;}
+	</style>  
+	<body>
+	    <div class="box">
+	        <input type="text">
+	        <a id="btn" class="btn btn-on" href="javaScript:void(0);">获取验证码</a>
+	    </div>
+	</body>	
+	<script>
+		(function(){
+		    var btn = document.getElementById("btn");
+		    var handler = function(){
+		        doClick();
+		        removeEvent(btn,'click',handler);//取消绑定该事件
+		    }
+		    
+		    function addEvent(obj,type,handler){
+		        if(obj.addEventListener){
+		            obj.addEventListener(type,handler,false);
+		        }else if(obj.attachEvent){
+		            obj.attachEvent('on'+type,handler);
+		        }
+		    }
+		
+		    function removeEvent(obj,type,handler){
+		        if(obj.removeEventListener){
+		            obj.removeEventListener(type,handler,false);
+		        }else if(obj.detachEvent){
+		            obj.detachEvent("on"+type,handler);
+		        }
+		    }
+		
+		    function doClick(){
+		        removeClass(btn,'btn-on');
+		        addClass(btn,'btn-off');
+		        btn.innerHTML="60s后重新获取";
+		        var clickTime = new Date().getTime();
+		        var Timer = setInterval(function(){
+		            var nowTime = new Date().getTime();
+		            var second  = Math.ceil(60-(nowTime-clickTime)/1000);
+		            if(second>0){
+		                btn.innerHTML = second+"s后重新获取";
+		            }else{
+		                clearInterval(Timer);
+		                removeClass(btn,'btn-off');
+		                addClass(btn,'btn-on');
+		                btn.innerHTML = "获取验证码";
+		                addEvent(btn,"click",handler);
+		            }
+		        },1000);
+		    }
+		
+		
+		    function hasClass(obj, cls) {  
+		        return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+		    }        
+		    function addClass(obj, cls) {  
+		        if (!hasClass(obj, cls)) obj.className += " " + cls;  
+		    }        
+		    function removeClass(obj, cls) {  
+		        if (hasClass(obj, cls)) {  
+		            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
+		            obj.className = obj.className.replace(reg, ' ');  
+		        }  
+		    }
+		    
+		    addEvent(btn,"click",handler);  
+		
+		})();
+	</script>
+</html>
+

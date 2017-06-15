@@ -1,0 +1,18 @@
+{
+	"data": {
+        "id":"1",
+		"customerName":"11",
+        "customerTel":"15112341234",
+        "customerCardId":"1111111111",
+        "saleDate":"2016/11/15",
+        "confirmStatus":"0",
+        "brandName":"帅丰",
+        "productName":"集成灶",
+       	"standard":"JK-071",
+ 		"productId":"1",
+ 		"birthday":"2016-09-09",
+ 		"isSold":"yes",
+		"productUrl":"http://image.wpwl.org:80/uploadfile/3/20160924/new/1474678445585-3c9fba5d87c54df8bcce6e3083184084.jpg"
+	},
+	"success":true
+}

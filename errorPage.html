@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+		<title>正品控</title>
+	</head>
+	<style>
+		body, div, dl, dt, dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,select,img,label{margin:0;padding:0;}
+		li{list-style: none;}
+		a{text-decoration:none;}
+		b,strong{font-weight:normal;}
+		i,em{font-style:normal;}
+		body{
+			font-size:0.3rem;
+		}
+		.top{
+			width:100%;
+			height:0.88rem;
+			background:#333;
+			color:white;
+			font-size:0.35rem;
+			position:fixed;
+			top:0;
+			left:0;
+			z-index:3;
+		}
+		.top div{
+			width:100%;
+			height:0.88rem;
+			line-height:0.88rem;
+			text-align:center;
+		}
+		/*==================异常=================*/
+		.loading {
+			width: 100%;
+			position: fixed;
+			height: 100%;
+			z-index: 99;
+			left: 0;
+			top: 0.88rem;
+		}
+		.loading .middle {
+			width: 100%;
+			position: absolute;
+			height: 6rem;
+			text-align: center;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto
+		}
+		.middle img {
+			width: 2.1rem;
+			margin: 0 auto;
+			margin-bottom: 0.3rem;
+			display: block
+		}
+		.loadEffect{ 
+			width: 100px; 
+			height: 100px; 
+			position: absolute; 
+			margin:auto;
+			left:0;
+			top:0;
+			right:0;
+			bottom:0.88rem;
+		}
+		.loadEffect p{ 
+			position: absolute; 
+			margin:auto;
+			left:0;
+			top:0;
+			right:0;
+			bottom:0;
+			width:0.56rem;
+			height:0.56rem;
+			border:3px solid #f9c804;
+			-webkit-animation: load 1s ease infinite;
+		}
+		@-webkit-keyframes load{
+		    0%{
+		        transform: rotate(-45deg);
+		    }
+		    100%{
+		        transform: rotate(315deg);
+		    }
+		}
+		.loadEffect span{
+			color:0.26rem;
+			color:#666;
+			width:100%;
+			display: block;
+			text-align: center;
+			position: absolute;
+			bottom:0
+		}
+	</style>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		window.addEventListener("resize",function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		},false);
+	</script>
+	<body>
+		<div class="top">
+			<div></div>
+		</div>
+		<div class="loading">
+			<div class="loadEffect"> 
+				<p></p>
+				<span>Loading</span> 
+			</div>
+			<div class="middle" style="display:none"><img src="images/scan_net.png"/><p>网络异常，点击<a href="javascript:;" id="wpReload">重新加载</a></p></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="lib/jquery-2.1.0.min.js" ></script>
+	<script type="text/javascript" src="lib/base64_16.js" ></script>
+	<script type="text/javascript" src="lib/crypto-js.js" ></script>
+	<script>
+		$("body").css("background","#F8F8F8")
+		$(".loadEffect").hide().siblings(".middle").show();
+		$(".middle img").attr('src',"images/error_else.png");
+		$(".middle p").html("出错了，请稍后再试");
+		$(".top div").html("异常页面");
+	</script>
+</html>

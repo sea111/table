@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/consumerAgency.css" />
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		window.addEventListener("resize",function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		},false);
+	</script>
+	<body>
+		<div id="box">
+			<div class="top">
+				<i class="bg-icon back" id="back"></i>
+				<div>产品激活</div>
+			</div>
+			<div class="consumer-agency">
+				<div class="common consumer">我是消费者</div>
+				<div class="common agency">我是商家</div>
+			</div>
+			<div class="background"></div>
+			<div id="consumer-content">
+				<div class="commodity-list shop-list">
+					<label class="same order">商品序列号 *</label>
+					<input type="text" placeholder="请填写任意购买商品的17位序列号" />
+				</div>
+				<div class="commodity-list">
+					<label class="same name">姓名 *</label>
+					<input type="text" placeholder="请填写您的姓名" />
+				</div>
+				<div class="commodity-list">
+					<label class="same phonenumber">手机号 *</label>
+					<input type="text" placeholder="请填写您的手机号" />
+				</div>
+				<div class="commodity-list">
+					<label class="same message-code">短信验证码 *</label>			
+					<span class="get-code">
+						<input class="code" type="text" value="456782"/>
+						<i class="get">获取验证码</i>
+					</span>
+				</div>
+				<div class="commodity-list">
+					<label class="same address">住址</label>
+					<input type="text" placeholder="请填写您的住址" />
+				</div>
+				<div class="commodity-list">
+					<label class="same product-model">产品型号</label>
+					<input type="text" placeholder="请填写产品包装上的型号" />
+				</div>
+				<div class="commodity-list">
+					<label class="same number">购买数量</label>
+					<input type="text" placeholder="请填写您本次购买商品的商品数量" />
+				</div>
+				<div class="commodity-list">
+					<label class="same remark">备注</label>
+					<input type="text" placeholder="最多200个汉字" />
+				</div>
+				<div class="commodity-list commodity-status">
+					<label class="status">商品状态 *</label>
+					<div class="install">
+						<span class="ins finish-install">已完成安装</span>
+						<span class="ins not-install">尚未进行安装</span>
+						<span class="ins no-install-require">不需要安装</span>
+					</div>
+				</div>				
+			</div>
+			<!--=================我是商家=================-->
+			<div id="agency-content">
+				 
+			</div>
+			<div class="footer">
+				<p class="must">带有*号的项目为必填项</p>
+				<div class="submit">提交</div>
+			</div>
+			<div class="loading">
+				<div class="middle"><img src="images/scan_net.png" />
+					<p>网络异常，点击
+						<a href="javascript:;" id="wpReload">重新加载</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="lib/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="js/consumerAgency.js" ></script>
+	<script>
+		$(".consumer").click(function(){
+			$(this).css({"border-bottom":"4px solid #4e9cfc","color":"#4e9cfc"})
+			$('.agency').css({"border-bottom":"4px solid #fff","color":"#000"})
+			$("#consumer-content").show();
+			$("#aagency-content").hide();			
+		})
+		$(".agency").click(function(){
+			$(this).css({"border-bottom":"4px solid #4e9cfc","color":"#4e9cfc"})
+			$(".consumer").css({"border-bottom":"4px solid #fff","color":"#000"})
+			$("#agency-content").show();
+			$("#consumer-content").hide();
+		})
+		
+		$(".finish-install").click(function(){
+			$(this).css({"background":"#4e9cfc","color":"#fff","opacity":"0.82"})
+			$(".no-install-require").css({"color":"#000","opacity":"0.32"})
+			$(".not-install").css({"color":"#000","opacity":"0.32"})
+		})
+		$(".not-install").click(function(){
+			$(this).css({"background":"#4e9cfc","color":"#fff","opacity":"0.82"})
+			$(".finish-install").css({"color":"#000","opacity":"0.32"})
+			$(".no-install-require").css({"color":"#000","opacity":"0.32"})
+		})
+		$(".no-install-require").click(function(){
+			$(this).css({"background":"#4e9cfc","color":"#fff","opacity":"0.82"})
+			$(".finish-install").css({"color":"#000","opacity":"0.32"})
+			$(".not-install").css({"color":"#000","opacity":"0.32"})
+		})
+	
+		var reg = /^1[3|4|5|8][0-9]\d{4,8}$/;  
+		/*if(!reg.test($.trim(phone))){  
+		    $(".telephoneNumber").html("请输入有效的手机号！");  
+		    }else{  
+		    $(".telephoneNumber").html("");  
+	    }  */
+	</script>
+</html>
